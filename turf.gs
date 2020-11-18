@@ -39,10 +39,11 @@ function TURFPACKET(url_skip) {
   file = file[1];
   
   var pdf = fetch('https://drive.google.com/uc?id=' + file).getBytes();
-  var txt = fetch(PDFTOTEXT_DEPLOYMENT + '/?l=1', pdf).getDataAsString();
+  var txt = fetch(PDFTOTEXT_DEPLOYMENT + '/?l=2', pdf).getDataAsString();
   if(txt.startsWith('\n'))
     throw txt.split('\n')[1];
   
+  txt = txt.replace(/\f/g, '');
   return txt.split('\n').filter(function(elem) {
     return elem.match(/Turf [0-9]/);
   }).join('\n');
