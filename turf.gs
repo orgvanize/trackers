@@ -79,6 +79,9 @@ function onEdit(event) {
   var shot = event.source.getSheetByName(OUTPUT_SHEET);
   for(var turf of turfs)
     shot.appendRow(turf);
+  
+  var data = shot.getRange(2, 1, shot.getLastRow() - 1, shot.getLastColumn() - 1);
+  data.sort([1, 2, 3]);
 }
 
 function rowcell(sheet, range, offset) {
