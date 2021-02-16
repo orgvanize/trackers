@@ -1,0 +1,31 @@
+Turf tracker setup
+==================
+ 1. Create a Google Sheet and name it.
+ 2. Go File -> Import, choose Upload, and select turf.csv.
+ 3. Set Import location to Replace spreadsheet.
+ 4. Ensure that Convert text to numbers, dates, and formulas is enabled.
+ 5. Hit Import data.
+ 6. Repeat steps 2–5 for turf_output.csv, instead choosing Insert new sheet(s).
+ 7. Hide columns A
+ 8. Open Tools -> Script editor, name it, paste in turf.gs, and hit Save project.
+ 9. Back in the Sheets editor, rename the Sheet1 tab as you see fit.
+10. Select A3:K4 and add the following rules via Format -> Conditional formatting:
+   * Duplicate entry (blue): =countif($A:$A, $A3)>1
+   * Failed to process (red): =or(and($H3>0, not($J3)), and(not($H3), $J3))
+   * Processing incomplete (yellow): =and($H3<>$K3)
+   * Recut (green): =and($B3, not($H3))
+11. Select H3:H4 and configure Data -> Data validation as follows:
+   * Criteria: List of items
+   * List of items: 0
+   * Show dropdown list in cell: leave checked
+   * On invalid data: Reject input
+   * Appearance: check
+   * Show validation help text: Set to 0 if there are no turfs; otherwise, leave blank!
+12. Select 4:4, open Data -> Protected sheets and ranges, and choose Show a warning...
+13. Hide columns A, I, and K.
+14. Select View -> Freeze -> 2 rows.
+15. Switch to the turf_output tab and rename it to MiniVAN.
+16. Select 3:3, open Data -> Protected sheets and ranges, and choose Show a warning...
+17. Select View -> Freeze -> 2 rows.
+
+NB: Whenever you add a new row to the main tab, copy its contents from the (protected) template row!
