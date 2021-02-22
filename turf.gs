@@ -30,7 +30,7 @@ function TURFPACKET(url_skip) {
   
   var url = url_skip[0];
   var skip = url_skip[url_skip.length - 1];
-  if(!url || skip)
+  if(!url || String(skip).length)
     return;
   
   var file = url.match(/([^\/]+)(\/[^\/]*)?$/);
