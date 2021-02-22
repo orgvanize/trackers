@@ -80,7 +80,7 @@ function onEdit(event) {
   for(var turf of turfs)
     shot.appendRow(turf);
   
-  var data = shot.getRange(2, 1, shot.getLastRow() - 1, shot.getLastColumn());
+  var data = shot.getRange(3, 1, shot.getLastRow() - 2, shot.getLastColumn());
   data.sort([1, 2, 3]);
 }
 
