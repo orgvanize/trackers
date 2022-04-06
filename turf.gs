@@ -39,13 +39,13 @@ function TURFPACKET(url_skip) {
   file = file[1];
   
   var pdf = fetch('https://drive.google.com/uc?id=' + file).getBytes();
-  var txt = fetch(PDFTOTEXT_DEPLOYMENT + '/?l=2', pdf).getDataAsString();
+  var txt = fetch(PDFTOTEXT_DEPLOYMENT + '/?layout&l=2', pdf).getDataAsString();
   if(txt.startsWith('\n'))
     throw txt.split('\n')[1];
   
   txt = txt.replace(/\f/g, '');
   return txt.split('\n').filter(function(elem) {
-    return elem.match(/^[0-9-]+ Turf [0-9]+$/);
+    return elem.match(/^[0-9-]+ +Turf [0-9]+/);
   }).join('\n');
 }
 
@@ -68,7 +68,7 @@ function onEdit(event) {
   var county = rowcell(sheet, range, COUNTY_OFFSET).getValue();
   var precinct = rowcell(sheet, range, PRECINCT_OFFSET).getValue();
   turfs = turfs.split('\n').map(function(elem) {
-    elem = elem.split(' ');
+    elem = elem.replace(/ +/, ' ').split(' ');
     
     var turf = elem[2];
     var list = elem[0];
