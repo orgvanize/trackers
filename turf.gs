@@ -68,11 +68,12 @@ function onEdit(event) {
   var county = rowcell(sheet, range, COUNTY_OFFSET).getValue();
   var precinct = rowcell(sheet, range, PRECINCT_OFFSET).getValue();
   turfs = turfs.split('\n').map(function(elem) {
-    elem = elem.replace(/ +/, ' ').split(' ');
+    elem = elem.replaceAll(/ +/g, ' ').split(' ');
     
     var turf = elem[2];
+    var doors = elem[4];
     var list = elem[0];
-    return [county, precinct, turf, list];
+    return [county, precinct, turf, doors, list];
   });
   rowcell(sheet, range, COUNT_OFFSET).setValue(turfs.length);
   

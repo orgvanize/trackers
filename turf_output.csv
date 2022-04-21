@@ -1,3 +1,3 @@
 MiniVAN field list distribution tracker,,,,,,
-County,Precinct,Turf number,List number,Assignee,Out?,Notes
-,,,,,=FALSE(),
+County,Precinct,Turf number,Doors,List number,Assignee,Out?,Notes
+,,,,,,=FALSE(),
