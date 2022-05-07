@@ -45,7 +45,7 @@ function TURFPACKET(url_skip) {
   
   txt = txt.replace(/\f/g, '');
   return txt.split('\n').filter(function(elem) {
-    return elem.match(/^[0-9-]+ +Turf [0-9]+/);
+    return elem.match(/^[0-9-]+  +Turf [0-9]+/);
   }).join('\n');
 }
 
