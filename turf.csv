@@ -1,5 +1,5 @@
 ,VAN volunteer turf cutting tracker,,,,,,,,,
-,Recut?,Map type,County,Precinct,Claim,Packet link,Turf count,,Done?,
-"=$D3&"".""&$E3&"".""&$B3",=FALSE(),,,,,,,=turfpacket($G3:$H3),=FALSE(),"=COUNTIFS($MiniVAN.$A:$A, $D3, $MiniVAN.$B:$B, $E3)"
-"=$D4&"".""&$E4&"".""&$B4",=FALSE(),,,,,,,=turfpacket($G4:$H4),=FALSE(),"=COUNTIFS($MiniVAN.$A:$A, $D4, $MiniVAN.$B:$B, $E4)"
-,Cut:,"=COUNTIFS($B$3:$B$4, 0, $J$3:$J$4, 1)",Recut:,"=COUNTIFS($B$3:$B$4, 1, $J$3:$J$4, 1)",,,,,"=COUNTIF($J$3:$J$4, 1)",
+,Recut?,Map type,Priority,County,Precinct,Claim,Packet link,Turf count,,Done?,
+"=$D3&"".""&$E3&"".""&$B3",=FALSE(),,=IFERROR(MATCH(REGEXREPLACE($A3, "\.TRUE$", "FALSE"), $A:$A, 0), ROW(D3))-2,,,,,,=turfpacket($G3:$H3),=FALSE(),"=COUNTIFS($MiniVAN.$A:$A, $D3, $MiniVAN.$B:$B, $E3)"
+"=$D4&"".""&$E4&"".""&$B4",=FALSE(),,=IFERROR(MATCH(REGEXREPLACE($A4, "\.TRUE$", "FALSE"), $A:$A, 0), ROW(D4))-2,,,,,,=turfpacket($G4:$H4),=FALSE(),"=COUNTIFS($MiniVAN.$A:$A, $D4, $MiniVAN.$B:$B, $E4)"
+,Cut:,"=COUNTIFS($B$3:$B$4, 0, $L$3:$L$4, 1)",Recut:,"=COUNTIFS($B$3:$B$4, 1, $L$3:$L$4, 1)",,,,,"=COUNTIF($L$3:$L$4, 1)",

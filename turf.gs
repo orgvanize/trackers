@@ -16,15 +16,17 @@
 
 const OUTPUT_SHEET = 'MiniVAN';
 
+const PRIORITY_OFFSET = -7;
 const COUNTY_OFFSET = -6;
 const PRECINCT_OFFSET = -5;
 const COUNT_OFFSET = -2;
 const TURFPACKET_OFFSET = -1;
 
-const SORT_COUNTY = 1;
-const SORT_PRECINCT = 2;
-const SORT_TURF = 3;
-const SORT_ORDER = [SORT_COUNTY, SORT_PRECINCT, SORT_TURF];
+const SORT_PRIORITY = 1;
+const SORT_COUNTY = 2;
+const SORT_PRECINCT = 3;
+const SORT_TURF = 4;
+const SORT_ORDER = [SORT_PRIORITY, SORT_COUNTY, SORT_PRECINCT, SORT_TURF];
 
 const PDFTOTEXT_DEPLOYMENT = 'https://orgvanize-pdftotext.herokuapp.com';
 
@@ -70,6 +72,7 @@ function onEdit(event) {
     return;
   }
   
+  var priority = rowcell(sheet, range, PRIORITY_OFFSET).getValue();
   var county = rowcell(sheet, range, COUNTY_OFFSET).getValue();
   var precinct = rowcell(sheet, range, PRECINCT_OFFSET).getValue();
   turfs = turfs.split('\n').map(function(elem) {
@@ -78,7 +81,7 @@ function onEdit(event) {
     var turf = elem[2];
     var doors = elem[4];
     var list = elem[0];
-    return [county, precinct, turf, doors, list];
+    return [priority, county, precinct, turf, doors, list];
   });
   rowcell(sheet, range, COUNT_OFFSET).setValue(turfs.length);
   
