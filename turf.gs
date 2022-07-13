@@ -21,6 +21,11 @@ const PRECINCT_OFFSET = -5;
 const COUNT_OFFSET = -2;
 const TURFPACKET_OFFSET = -1;
 
+const SORT_COUNTY = 1;
+const SORT_PRECINCT = 2;
+const SORT_TURF = 3;
+const SORT_ORDER = [SORT_COUNTY, SORT_PRECINCT, SORT_TURF];
+
 const PDFTOTEXT_DEPLOYMENT = 'https://orgvanize-pdftotext.herokuapp.com';
 
 function TURFPACKET(url_skip) {
@@ -82,7 +87,7 @@ function onEdit(event) {
     shot.appendRow(turf);
   
   var data = shot.getRange(3, 1, shot.getLastRow() - 2, shot.getLastColumn());
-  data.sort([1, 2, 3]);
+  data.sort(SORT_ORDER);
 }
 
 function rowcell(sheet, range, offset) {
