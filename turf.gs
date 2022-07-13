@@ -22,6 +22,8 @@ const PRECINCT_OFFSET = -5;
 const COUNT_OFFSET = -2;
 const TURFPACKET_OFFSET = -1;
 
+const COMPLETION_FORMULA = '=sumif(\'MiniVAN Commit\'!$A:$A, "List "&indirect("R[0]C[-1]", FALSE), \'MiniVAN Commit\'!$F:$F)/indirect("R[0]C[-2]", FALSE)';
+
 const SORT_PRIORITY = 1;
 const SORT_COUNTY = 2;
 const SORT_PRECINCT = 3;
@@ -81,7 +83,7 @@ function onEdit(event) {
     var turf = elem[2];
     var doors = elem[4];
     var list = elem[0];
-    return [priority, county, precinct, turf, doors, list];
+    return [priority, county, precinct, turf, doors, list, COMPLETION_FORMULA];
   });
   rowcell(sheet, range, COUNT_OFFSET).setValue(turfs.length);
   
